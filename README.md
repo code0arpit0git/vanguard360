@@ -41,3 +41,18 @@ graph TD
         COR -->|Unified Risk Score| LEDGER
         LEDGER -->|Immutable Block Hash| REP
     end
+
+    ## 🚀 Installation & Portable Setup
+
+Vanguard360 is designed for **maximum portability**. It requires zero host-level dependencies other than Docker. 
+
+### Method 1: Docker (Recommended for Portability)
+Run the entire suite securely isolated inside a container.
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/code0arpit0git/vanguard360.git](https://github.com/code0arpit0git/vanguard360.git)
+cd vanguard360
+
+# 2. Spin up the environment
+docker compose up --build
