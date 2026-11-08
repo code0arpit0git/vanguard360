@@ -42,17 +42,54 @@ graph TD
         LEDGER -->|Immutable Block Hash| REP
     end
 
-    ## 🚀 Installation & Portable Setup
+    Installation & Portable Setup
+Vanguard360 is designed for maximum portability. It requires zero host-level dependencies other than Docker.
 
-Vanguard360 is designed for **maximum portability**. It requires zero host-level dependencies other than Docker. 
-
-### Method 1: Docker (Recommended for Portability)
+Method 1: Docker (Recommended for Portability)
 Run the entire suite securely isolated inside a container.
 
-```bash
+Bash
 # 1. Clone the repository
-git clone [https://github.com/code0arpit0git/vanguard360.git](https://github.com/code0arpit0git/vanguard360.git)
+git clone https://github.com/code0arpit0git/vanguard360.git
 cd vanguard360
 
 # 2. Spin up the environment
 docker compose up --build
+The dashboard will automatically be available at http://localhost:8501.
+
+Method 2: Local Python Virtual Environment
+If you prefer running it natively for development:
+
+Bash
+# 1. Create and activate a virtual environment
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate # macOS/Linux
+
+# 2. Install requirements
+pip install -r requirements.txt
+
+# 3. Launch the Streamlit dashboard
+streamlit run app.py
+🔐 Security & Credential Management
+No Hardcoded Secrets: This repository strictly enforces a .gitignore policy. Configuration files containing local variables, audit_chain.json state files, and virtual environments are never pushed to version control.
+
+Blockchain Signature Key: The HMAC ledger relies on a server-side secret key. In production, pass this via an environment variable (VANGUARD_HMAC_KEY) rather than hardcoding it into the application.
+
+Credential Hasher Utility: The built-in dashboard includes a PBKDF2-HMAC-SHA256 hashing utility to convert raw APIs and passwords into salted database-safe fingerprints.
+
+📁 Project Structure
+Plaintext
+vanguard360/
+├── app.py                      # Main Streamlit Dashboard & UI Hub
+├── Dockerfile                  # Containerization blueprints
+├── docker-compose.yml          # Portable deployment orchestrator
+├── requirements.txt            # Python dependencies
+├── core/
+│   ├── devsecops_scanner.py    # AST, Secrets, and Dockerfile auditor
+│   ├── easm_scanner.py         # Network and HTTP header recon
+│   ├── correlator.py           # Unified risk correlation logic
+│   └── blockchain_ledger.py    # HMAC-SHA256 PoW audit trail
+├── utils/
+│   └── pdf_generator.py        # Executive VAPT report exporter
+└── sample_targets/             # Built-in vulnerable codebase for offline testing
