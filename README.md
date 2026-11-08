@@ -43,13 +43,4 @@ graph TD
     end
 
 
-🔥 Key Capabilities
-Inside-Out (DevSecOps) Engine: Uses Abstract Syntax Tree (AST) parsing to defeat multi-line regex evasion. Scans for OS Command Injection, exposed Web3 private keys, and Dockerfile privilege escalation risks.
-
-Outside-In (EASM) Engine: Verifies if internally declared ports (e.g., Ethereum RPC 8545 or Flask 5000) are actually exposed to the external network interface.
-
-Exploit Chain Correlator: Intelligently links internal code flaws (e.g., DEBUG=True) to active external network exposures, elevating severity scores automatically.
-
-Zero-Trust Audit Ledger: Secures scan findings into a local JSON blockchain using cryptographic nonces and HMAC-SHA256 signatures, making compliance logs tamper-proof.
-
-100% Offline Viva/Demo Mode: Includes a deterministic simulation engine to guarantee flawless demonstrations even in heavily firewalled or offline academic/enterprise environments.
+se environments.
