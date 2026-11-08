@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  vanguard-scanner:
+    build: .
+    container_name: vanguard360_engine
+    ports:
+      - "127.0.0.1:8501:8501" # Securely binds only to your localhost
+    volumes:
+      # Mounts the sample targets so you can scan them, but in Read-Only mode (:ro)
+      - ./sample_targets:/app/sample_targets:ro
+    restart: unless-stopped
+    environment:
+      # Injects the secret key we discussed for the Blockchain HMAC signature
+      - VANGUARD_HMAC_KEY=super_secret_demo_key_2026
