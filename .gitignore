@@ -1,11 +1,36 @@
-# Virtual Environments
+# ==========================================
+# Vanguard360 Security & Configuration Files
+# ==========================================
+# Never commit secrets, environment variables, or local blockchain state
+.env
+.env.*
+audit_chain.json
+*.key
+*.pem
+*.cert
+*secret*
+
+# Generated Reports 
+# (Prevents cluttering the repo with test PDFs)
+*.pdf
+Vanguard360_VAPT_Report.pdf
+
+# ==========================================
+# Python & Virtual Environments
+# ==========================================
 venv/
 .venv/
-
-# Python Cache
+env/
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.pytest_cache/
+pip-log.txt
 
-# Local Scan Data & Secrets
-audit_chain.json
-.env
+# ==========================================
+# IDEs & OS Specific Files
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
